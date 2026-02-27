@@ -1,30 +1,30 @@
 import java.util.Scanner;
-
 public class PalindromecheckerApp {
 
+    /**
+     * Application entry point for UC3.
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        // Prompt user
-        System.out.print("Input text: ");
+        // Take input from user
+        System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        // Normalize input for case-insensitive check
-        String text = input.toLowerCase();
+        String reversed = "";
 
-        boolean isPalindrome = true;
-
-        // Loop only till half of the string length
-        for (int i = 0; i < text.length() / 2; i++) {
-            if (text.charAt(i) != text.charAt(text.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Reverse string using loop
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
 
-        // Print result exactly as requested
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        // Compare original and reversed string
+        if (input.equals(reversed)) {
+            System.out.println("Result: \"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
+        }
 
         scanner.close();
     }
