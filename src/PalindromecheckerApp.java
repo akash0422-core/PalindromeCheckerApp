@@ -1,41 +1,31 @@
+import java.util.Scanner;
+
 public class PalindromecheckerApp {
 
-    /**
-     * Application entry point for UC9
-     */
     public static void main(String[] args) {
 
-        // Input string
-        String input = "madam";
+        Scanner sc = new Scanner(System.in);
 
-        // Call recursive method
-        boolean result = check(input, 0, input.length() - 1);
+        System.out.print("Input : ");
+        String input = sc.nextLine();
 
-        // Display output
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
-    }
+        // Normalize the string
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-    /**
-     * Recursively checks whether a string is palindrome
-     * @param s Input string
-     * @param start Starting index
-     * @param end Ending index
-     * @return true if palindrome, otherwise false
-     */
-    private static boolean check(String s, int start, int end) {
+        boolean isPalindrome = true;
 
-        // Base case: if start >= end, all characters matched
-        if (start >= end) {
-            return true;
+        // Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // If characters do not match
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
+        System.out.println("Is Palindrome?: " + isPalindrome);
 
-        // Recursive call moving inward
-        return check(s, start + 1, end - 1);
+        sc.close();
     }
 }
