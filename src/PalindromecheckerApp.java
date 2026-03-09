@@ -3,7 +3,7 @@ import java.util.*;
 public class PalindromecheckerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a string: ");
+        System.out.print("Enter a string ");
 
         // Define the input string
         String input = scanner.nextLine();
